@@ -28,35 +28,35 @@ function VacationCard(props) {
   });
 
   return (
-    <Card className={styles.root}>
-      <CardMedia className={cardImage} image={vacationData.imageUrl} />
-      <CardActions className={styles.btnsContainer}>
-        <IconButton
-          iconComponent={<DeleteRoundedIcon />}
-          sm
-          outline
-          onClick={onDeleteClick}
-        />
-        <IconButton
-          iconComponent={<ModeEditRoundedIcon />}
-          sm
-          outline
-          onClick={onEditClick}
-        />
-      </CardActions>
-      <CardContent className={cardContent}>
-        <Typography variant="h5" component="h5" gutterBottom>
-          {vacationData.name}SDFDSFSDFFSDF
-        </Typography>
-        <div className={styles.cardFooter}>
-          <div>
-            <LocationOnRoundedIcon color="primary" />
-            <p>{vacationData.location}</p>
+      <Card className={styles.root}>
+        <CardMedia className={cardImage} image={vacationData.imageUrl} />
+        <CardActions className={styles.btnsContainer}>
+          <IconButton
+              iconComponent={<DeleteRoundedIcon />}
+              sm
+              outline
+              onClick={onDeleteClick}
+          />
+          <IconButton
+              iconComponent={<ModeEditRoundedIcon />}
+              sm
+              outline
+              onClick={onEditClick}
+          />
+        </CardActions>
+        <CardContent className={cardContent}>
+          <Typography variant="h5" component="h5" gutterBottom>
+            {vacationData.name}
+          </Typography>
+          <div className={styles.cardFooter}>
+            <div>
+              <LocationOnRoundedIcon color="primary" />
+              <p>{vacationData.location}</p>
+            </div>
+            <p>$ {vacationData.price}</p>
           </div>
-          <p>$ {vacationData.price}</p>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
   );
 }
 
@@ -64,6 +64,7 @@ VacationCard.propTypes = {
   onEditClick: PropTypes.func.isRequired,
   onDeleteClick: PropTypes.func.isRequired,
   vacationData: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
