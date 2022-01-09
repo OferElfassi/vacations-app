@@ -1,25 +1,25 @@
-const vacationCardStyle = (theme) => ({
+const vacationCardStyle = theme => ({
   root: {
-    width: "294px",
-    height: "265px",
-    position: "relative",
+    width: '294px',
+    height: '265px',
+    position: 'relative',
   },
   textOverflow: {
-    "& h5": {
-      textOverflow: "ellipsis",
-      overflow: "hidden",
-      whiteSpace: "nowrap",
-      width: "90px",
-      "&:hover": {
-        overflow: "visible",
-        whiteSpace: "normal",
-        height: "auto",
+    '& h5': {
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      width: '90px',
+      '&:hover': {
+        overflow: 'visible',
+        whiteSpace: 'normal',
+        height: 'auto',
       },
     },
   },
   cardImg: {
-    width: "268.19px",
-    height: "170.38px",
+    width: '268.19px',
+    height: '170.38px',
     marginTop: 12.62,
     marginLeft: 13.53,
   },
@@ -27,35 +27,35 @@ const vacationCardStyle = (theme) => ({
     borderRadius: 6,
   },
   btnsContainer: {
-    display: "flex",
-    flexDirection: "row-reverse",
-    position: "absolute",
+    display: 'flex',
+    flexDirection: 'row-reverse',
+    position: 'absolute',
     right: 8,
     top: 152,
   },
   cardContent: {
-    padding: "13.36px 13.26px 0px 13.53px",
+    padding: '13.36px 13.26px 0px 13.53px',
   },
   cardFooter: {
-    display: "flex",
-    justifyContent: "space-between",
+    display: 'flex',
+    justifyContent: 'space-between',
 
-    "& div": {
-      display: "flex",
-      alignItems: "center",
-      "& p": {
+    '& div': {
+      display: 'flex',
+      alignItems: 'center',
+      '& p': {
         color: theme.palette.text.secondary,
-        fontWeight: "bold",
+        fontWeight: 'bold',
         fontSize: 14,
       },
-      "& svg": {
+      '& svg': {
         marginRight: 8.31,
         fontSize: 16.08,
       },
     },
-    "& p": {
+    '& p': {
       color: theme.palette.info.main,
-      fontWeight: "bold",
+      fontWeight: 'bold',
     },
   },
 });
