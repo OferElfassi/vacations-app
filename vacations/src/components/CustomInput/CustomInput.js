@@ -1,8 +1,7 @@
 import React from 'react';
-import InputBase from '@mui/material/InputBase';
+import TextField from '@mui/material/TextField';
 import cx from 'clsx';
 import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
 import makeStyles from '@mui/styles/makeStyles';
 import SearchIcon from '@mui/icons-material/Search';
 import PropTypes from 'prop-types';
@@ -13,28 +12,25 @@ const useStyles = makeStyles(inputStyle);
 function CustomInput(props) {
   const {iconComponent, label, placeholder, sm, lg, style, id, name} = props;
   const styles = useStyles();
-
   const root = cx({
     [styles.root]: true,
     [styles.icon]: iconComponent,
   });
-
   const inputComponent = cx({
     [styles.input]: true,
     [styles.smallInput]: sm,
     [styles.largeInput]: lg,
   });
-
   return (
     <FormControl variant="standard" style={style} className={root}>
       {iconComponent && <SearchIcon />}
-      {label && (
-        <InputLabel shrink htmlFor={id}>
-          {label}
-        </InputLabel>
-      )}
-      <InputBase
+      <TextField
+        // error
+        // helperText="Incorrect entry."
+        label={label}
         className={inputComponent}
+        InputLabelProps={{shrink: true}}
+        InputProps={{disableUnderline: true}}
         id={id}
         name={name}
         placeholder={placeholder}
