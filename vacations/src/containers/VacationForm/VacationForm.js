@@ -35,41 +35,65 @@ function VacationForm(props) {
   });
 
   return (
-      <>
-        <Card className={containerStyle}>
-          <Typography variant="h4" component="h4" gutterBottom>
-            {editMode ? 'Edit a vacation' : 'Add a new vacation'}
-          </Typography>
-          <Box
-              component="form"
-              className={formContainerStyle}
-              noValidate
-              autoComplete="off">
-            <CustomInput sm label="Name" placeholder="Name" />
-            <CustomInput sm label="Location" placeholder="Location" />
-            <CustomInput sm label="Price" placeholder="Price" />
-            <CustomInput sm label="Image Url" placeholder="Image Url" />
-          </Box>
-        </Card>
-        <CardActions className={btnsContainer}>
-          {editMode ? (
-              <>
-                <IconButton
-                    iconComponent={<ClearIcon />}
-                    lg
-                    onClick={onCancelClick}
-                />
-                <IconButton
-                    iconComponent={<CheckIcon />}
-                    lg
-                    onClick={onSubmitClick}
-                />
-              </>
-          ) : (
-              <IconButton iconComponent={<AddIcon />} lg onClick={onAddClick} />
-          )}
-        </CardActions>
-      </>
+    <>
+      <Card className={containerStyle}>
+        <Typography variant="h4" component="h4" gutterBottom>
+          {editMode ? 'Edit a vacation' : 'Add a new vacation'}
+        </Typography>
+        <Box
+          component="form"
+          className={formContainerStyle}
+          noValidate
+          autoComplete="off">
+          <CustomInput
+            id="name"
+            name="name"
+            sm
+            label="Name"
+            placeholder="Name"
+          />
+          <CustomInput
+            id="location"
+            name="location"
+            sm
+            label="Location"
+            placeholder="Location"
+          />
+          <CustomInput
+            id="price"
+            name="price"
+            sm
+            label="Price"
+            placeholder="Price"
+          />
+          <CustomInput
+            id="imageUrl"
+            name="imageUrl"
+            sm
+            label="Image Url"
+            placeholder="Image Url"
+          />
+        </Box>
+      </Card>
+      <CardActions className={btnsContainer}>
+        {editMode ? (
+          <>
+            <IconButton
+              iconComponent={<ClearIcon />}
+              lg
+              onClick={onCancelClick}
+            />
+            <IconButton
+              iconComponent={<CheckIcon />}
+              lg
+              onClick={onSubmitClick}
+            />
+          </>
+        ) : (
+          <IconButton iconComponent={<AddIcon />} lg onClick={onAddClick} />
+        )}
+      </CardActions>
+    </>
   );
 }
 

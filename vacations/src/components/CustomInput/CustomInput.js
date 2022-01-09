@@ -11,28 +11,32 @@ import inputStyle from './inputStyle';
 const useStyles = makeStyles(inputStyle);
 
 function CustomInput(props) {
-  const {iconComponent, label, placeholder, sm, lg, style} = props;
+  const {iconComponent, label, placeholder, sm, lg, style, id, name} = props;
   const styles = useStyles();
+
   const root = cx({
     [styles.root]: true,
     [styles.icon]: iconComponent,
   });
+
   const inputComponent = cx({
     [styles.input]: true,
     [styles.smallInput]: sm,
     [styles.largeInput]: lg,
   });
+
   return (
     <FormControl variant="standard" style={style} className={root}>
       {iconComponent && <SearchIcon />}
       {label && (
-        <InputLabel shrink htmlFor="bootstrap-input">
+        <InputLabel shrink htmlFor={id}>
           {label}
         </InputLabel>
       )}
       <InputBase
         className={inputComponent}
-        id="bootstrap-input"
+        id={id}
+        name={name}
         placeholder={placeholder}
       />
     </FormControl>
@@ -41,6 +45,8 @@ function CustomInput(props) {
 
 CustomInput.propTypes = {
   iconComponent: PropTypes.element,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   label: PropTypes.string,
   placeholder: PropTypes.string.isRequired,
   sm: PropTypes.bool,
