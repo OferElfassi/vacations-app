@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import VacationCard from '../../components/VacationCard/VacationCard';
 
 function VacationList(props) {
-  const {vacations} = props;
+  const {vacations, onEditClick, onDeleteClick} = props;
 
   return (
     <>
       {vacations.map(vacation => (
         <Grid item key={vacation.id}>
           <VacationCard
-            onEditClick={() => {}}
-            onDeleteClick={() => {}}
+            onEditClick={onEditClick}
+            onDeleteClick={onDeleteClick}
             vacationData={vacation}
           />
         </Grid>
@@ -31,6 +31,8 @@ VacationList.propTypes = {
       imageUrl: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  onEditClick: PropTypes.func.isRequired,
+  onDeleteClick: PropTypes.func.isRequired,
 };
 
 export default VacationList;

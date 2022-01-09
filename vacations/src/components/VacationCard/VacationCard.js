@@ -46,13 +46,13 @@ function VacationCard(props) {
           iconComponent={<DeleteRoundedIcon />}
           sm
           outline
-          onClick={onDeleteClick}
+          onClick={() => onDeleteClick(vacationData.id)}
         />
         <IconButton
           iconComponent={<ModeEditRoundedIcon />}
           sm
           outline
-          onClick={onEditClick}
+          onClick={() => onEditClick(vacationData.id)}
         />
       </CardActions>
       <CardContent className={cardContent}>
