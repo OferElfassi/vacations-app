@@ -16,59 +16,60 @@ import vacationFormStyle from './vacationFormStyle';
 const useStyles = makeStyles(vacationFormStyle);
 
 function VacationForm(props) {
+  const {onCancelClick, onSubmitClick, onAddClick, editMode} = props;
   const styles = useStyles();
+
   const containerStyle = cx({
     [styles.root]: true,
-    [styles.formBackground]: !props.editMode,
+    [styles.formBackground]: !editMode,
   });
+
   const formContainerStyle = cx({
     [styles.formRoot]: true,
   });
+
   const btnsContainer = cx({
     [styles.btnsContainer]: true,
-    [styles.addBtnStyle]: !props.editMode,
-    [styles.editBtnsStyle]: props.editMode,
+    [styles.addBtnStyle]: !editMode,
+    [styles.editBtnsStyle]: editMode,
   });
+
   return (
-    <>
-      <Card className={containerStyle}>
-        <Typography variant="h4" component="h4" gutterBottom>
-          {props.editMode ? 'Edit a vacation' : 'Add a new vacation'}
-        </Typography>
-        <Box
-          component="form"
-          className={formContainerStyle}
-          noValidate
-          autoComplete="off">
-          <CustomInput sm label="Name" placeholder="Name" />
-          <CustomInput sm label="Location" placeholder="Location" />
-          <CustomInput sm label="Price" placeholder="Price" />
-          <CustomInput sm label="Image Url" placeholder="Image Url" />
-        </Box>
-      </Card>
-      <CardActions className={btnsContainer}>
-        {props.editMode ? (
-          <>
-            <IconButton
-              iconComponent={<ClearIcon />}
-              lg
-              onClick={props.onCancelClick}
-            />
-            <IconButton
-              iconComponent={<CheckIcon />}
-              lg
-              onClick={props.onSubmitClick}
-            />
-          </>
-        ) : (
-          <IconButton
-            iconComponent={<AddIcon />}
-            lg
-            onClick={props.onAddClick}
-          />
-        )}
-      </CardActions>
-    </>
+      <>
+        <Card className={containerStyle}>
+          <Typography variant="h4" component="h4" gutterBottom>
+            {editMode ? 'Edit a vacation' : 'Add a new vacation'}
+          </Typography>
+          <Box
+              component="form"
+              className={formContainerStyle}
+              noValidate
+              autoComplete="off">
+            <CustomInput sm label="Name" placeholder="Name" />
+            <CustomInput sm label="Location" placeholder="Location" />
+            <CustomInput sm label="Price" placeholder="Price" />
+            <CustomInput sm label="Image Url" placeholder="Image Url" />
+          </Box>
+        </Card>
+        <CardActions className={btnsContainer}>
+          {editMode ? (
+              <>
+                <IconButton
+                    iconComponent={<ClearIcon />}
+                    lg
+                    onClick={onCancelClick}
+                />
+                <IconButton
+                    iconComponent={<CheckIcon />}
+                    lg
+                    onClick={onSubmitClick}
+                />
+              </>
+          ) : (
+              <IconButton iconComponent={<AddIcon />} lg onClick={onAddClick} />
+          )}
+        </CardActions>
+      </>
   );
 }
 
@@ -77,6 +78,9 @@ VacationForm.propTypes = {
   onSubmitClick: PropTypes.func.isRequired,
   onAddClick: PropTypes.func.isRequired,
   editMode: PropTypes.bool,
+};
+VacationForm.defaultProps = {
+  editMode: false,
 };
 
 export default VacationForm;
