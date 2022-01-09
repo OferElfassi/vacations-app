@@ -50,7 +50,7 @@ CustomInput.propTypes = {
 CustomInput.defaultProps = {
   iconComponent: null,
   label: '',
-  lg: true,
+  lg: false,
   sm: false,
   style: {},
 };

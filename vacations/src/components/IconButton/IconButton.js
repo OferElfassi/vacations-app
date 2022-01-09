@@ -43,7 +43,7 @@ IconButton.propTypes = {
 };
 IconButton.defaultProps = {
   outline: false,
-  lg: true,
+  lg: false,
   sm: false,
   style: {},
 };
