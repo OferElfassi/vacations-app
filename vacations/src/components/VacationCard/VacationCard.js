@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import cx from 'clsx';
 import makeStyles from '@mui/styles/makeStyles';
 import Card from '@mui/material/Card';
@@ -12,11 +12,13 @@ import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
 import PropTypes from 'prop-types';
 import vacationCardStyle from './vacationCardStyle';
 import IconButton from '../IconButton/IconButton';
+import defaultImage from '../../assets/images/vacation_default.png';
 
 const useStyles = makeStyles(vacationCardStyle);
 
 function VacationCard(props) {
   const {onEditClick, onDeleteClick, vacationData} = props;
+  const [imageUrl, setImageUrl] = useState(vacationData.imageUrl);
   const styles = useStyles();
   const cardImage = cx({
     [styles.media]: true,
@@ -27,36 +29,45 @@ function VacationCard(props) {
     [styles.textOverflow]: true,
   });
 
+  const handleImageError = () => {
+    setImageUrl(defaultImage);
+  };
+
   return (
-      <Card className={styles.root}>
-        <CardMedia className={cardImage} image={vacationData.imageUrl} />
-        <CardActions className={styles.btnsContainer}>
-          <IconButton
-              iconComponent={<DeleteRoundedIcon />}
-              sm
-              outline
-              onClick={onDeleteClick}
-          />
-          <IconButton
-              iconComponent={<ModeEditRoundedIcon />}
-              sm
-              outline
-              onClick={onEditClick}
-          />
-        </CardActions>
-        <CardContent className={cardContent}>
-          <Typography variant="h5" component="h5" gutterBottom>
-            {vacationData.name}
-          </Typography>
-          <div className={styles.cardFooter}>
-            <div>
-              <LocationOnRoundedIcon color="primary" />
-              <p>{vacationData.location}</p>
-            </div>
-            <p>$ {vacationData.price}</p>
+    <Card className={styles.root}>
+      <CardMedia
+        className={cardImage}
+        component="img"
+        image={imageUrl}
+        onError={handleImageError}
+      />
+      <CardActions className={styles.btnsContainer}>
+        <IconButton
+          iconComponent={<DeleteRoundedIcon />}
+          sm
+          outline
+          onClick={onDeleteClick}
+        />
+        <IconButton
+          iconComponent={<ModeEditRoundedIcon />}
+          sm
+          outline
+          onClick={onEditClick}
+        />
+      </CardActions>
+      <CardContent className={cardContent}>
+        <Typography variant="h5" component="h5" gutterBottom>
+          {vacationData.name}
+        </Typography>
+        <div className={styles.cardFooter}>
+          <div>
+            <LocationOnRoundedIcon color="primary" />
+            <p>{vacationData.location}</p>
           </div>
-        </CardContent>
-      </Card>
+          <p>$ {vacationData.price}</p>
+        </div>
+      </CardContent>
+    </Card>
   );
 }
 
