@@ -12,11 +12,15 @@ import CardActions from '@mui/material/CardActions';
 import IconButton from '../../components/IconButton/IconButton';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import vacationFormStyle from './vacationFormStyle';
+import useForm from '../../hooks/useForm';
 
 const useStyles = makeStyles(vacationFormStyle);
 
+const initial = {name: '', location: '', price: '', imageUrl: ''};
+
 function VacationForm(props) {
   const {onCancelClick, onSubmitClick, onAddClick, editMode} = props;
+  const [handleInput, formValues, formIsValid, setValues] = useForm(initial);
   const styles = useStyles();
 
   const containerStyle = cx({
@@ -51,6 +55,10 @@ function VacationForm(props) {
             sm
             label="Name"
             placeholder="Name"
+            onChange={handleInput}
+            value={formValues ? formValues.name.value : ''}
+            error={formValues ? formValues.name.error : ''}
+            validators={['required']}
           />
           <CustomInput
             id="location"
@@ -58,6 +66,10 @@ function VacationForm(props) {
             sm
             label="Location"
             placeholder="Location"
+            onChange={handleInput}
+            value={formValues ? formValues.location.value : ''}
+            error={formValues ? formValues.location.error : ''}
+            validators={['required']}
           />
           <CustomInput
             id="price"
@@ -65,6 +77,10 @@ function VacationForm(props) {
             sm
             label="Price"
             placeholder="Price"
+            onChange={handleInput}
+            value={formValues ? formValues.price.value : ''}
+            error={formValues ? formValues.price.error : ''}
+            validators={['required', 'number']}
           />
           <CustomInput
             id="imageUrl"
@@ -72,6 +88,10 @@ function VacationForm(props) {
             sm
             label="Image Url"
             placeholder="Image Url"
+            onChange={handleInput}
+            value={formValues ? formValues.imageUrl.value : ''}
+            error={formValues ? formValues.imageUrl.error : ''}
+            validators={['required', 'url']}
           />
         </Box>
       </Card>
@@ -90,7 +110,12 @@ function VacationForm(props) {
             />
           </>
         ) : (
-          <IconButton iconComponent={<AddIcon />} lg onClick={onAddClick} />
+          <IconButton
+            iconComponent={<AddIcon />}
+            lg
+            onClick={onAddClick}
+            disabled={!formIsValid}
+          />
         )}
       </CardActions>
     </>
