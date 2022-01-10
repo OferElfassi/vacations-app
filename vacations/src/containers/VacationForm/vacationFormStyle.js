@@ -1,4 +1,4 @@
-const vacationFormStyle = theme => ({
+const vacationFormStyle = () => ({
   root: {
     maxWidth: 618,
     minWidth: 200,
@@ -11,6 +11,7 @@ const vacationFormStyle = theme => ({
     textAlign: 'center',
   },
   formBackground: {
+    // eslint-disable-next-line global-require
     backgroundImage: `url(${require('../../assets/images/form_bg.png')})`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center bottom',

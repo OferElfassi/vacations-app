@@ -12,19 +12,23 @@ const formValidators = {
 
 const useForm = initialValues => {
   const [formValues, setFormValues] = useState(null);
-  const [formIsValid, setFormIsValid] = useState(false);
+  const [formIsValid, setFormIsValid] = useState(true);
 
-  const setValues = vals => {
+  const setValues = (vals, reset = false) => {
     const values = {};
     Object.keys(vals).forEach(key => {
-      values[key] = {value: vals[key], error: ''};
+      values[key] = {
+        value: reset ? '' : vals[key],
+        error: '',
+        hasError: vals[key] === '',
+      };
     });
     setFormValues(values);
   };
 
   useEffect(() => {
     setValues(initialValues);
-  }, []);
+  }, [initialValues]);
 
   const setValue = (name, value, fieldName) => {
     setFormValues(prevState => ({
@@ -32,6 +36,7 @@ const useForm = initialValues => {
       [name]: {
         ...prevState[name],
         [fieldName]: value,
+        hasError: fieldName === 'error' && value !== '',
       },
     }));
   };
@@ -39,11 +44,12 @@ const useForm = initialValues => {
   const checkFormValidity = () => {
     let isFormValid = true;
     Object.keys(formValues).forEach(key => {
-      console.log(formValues[key].error !== '');
-
-      isFormValid &&= formValues[key].error === '';
+      if (key !== 'id') {
+        isFormValid &&= !formValues[key].hasError;
+      }
     });
     setFormIsValid(isFormValid);
+    return isFormValid;
   };
 
   const validate = (name, value, validators) => {
@@ -69,7 +75,19 @@ const useForm = initialValues => {
     validate(name, value, validators);
   };
 
-  return [handleInput, formValues, formIsValid, setValues];
+  const submitForm = submitCallback => {
+    if (checkFormValidity()) {
+      const values = {};
+      Object.keys(formValues).forEach(key => {
+        values[key] = formValues[key].value;
+      });
+
+      submitCallback(values);
+      setValues(initialValues, true);
+    }
+  };
+
+  return [handleInput, formValues, formIsValid, submitForm];
 };
 
 export default useForm;

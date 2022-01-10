@@ -24,6 +24,9 @@ const theme = createTheme({
     secondary: {
       main: '#f50057',
     },
+    error: {
+      main: '#f83131',
+    },
     background: {
       default: '#E5E5E5',
       paper: '#fff',
@@ -35,6 +38,7 @@ const theme = createTheme({
       primary: '#353646',
       secondary: 'rgba(53,54,70,0.4)',
       hint: '#F6F7FB',
+      label: '#77787B',
     },
   },
   components: {
@@ -51,6 +55,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           fontSize: 12,
+          border: 'none',
           fontWeight: 700,
           color: '#77787B',
           '&.Mui-focused': {

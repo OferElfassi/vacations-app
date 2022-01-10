@@ -1,28 +1,24 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import cx from 'clsx';
 import makeStyles from '@mui/styles/makeStyles';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
-import ClearIcon from '@mui/icons-material/Clear';
-import CheckIcon from '@mui/icons-material/Check';
-import AddIcon from '@mui/icons-material/Add';
-import CardActions from '@mui/material/CardActions';
-import IconButton from '../../components/IconButton/IconButton';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import vacationFormStyle from './vacationFormStyle';
 import useForm from '../../hooks/useForm';
+import VacationFormActions from './VacationFormActions';
 
 const useStyles = makeStyles(vacationFormStyle);
 
-const initial = {name: '', location: '', price: '', imageUrl: ''};
-
 function VacationForm(props) {
-  const {onCancelClick, onSubmitClick, onAddClick, editMode} = props;
-  const [handleInput, formValues, formIsValid, setValues] = useForm(initial);
   const styles = useStyles();
-
+  const {onCancelClick, onSubmitClick, editMode, initialValues, onEditClick} =
+    props;
+  const [handleInput, formValues, formIsValid, submitForm] = useForm(
+    initialValues || VacationForm.defaultProps.initialValues,
+  );
   const containerStyle = cx({
     [styles.root]: true,
     [styles.formBackground]: !editMode,
@@ -32,11 +28,18 @@ function VacationForm(props) {
     [styles.formRoot]: true,
   });
 
-  const btnsContainer = cx({
-    [styles.btnsContainer]: true,
-    [styles.addBtnStyle]: !editMode,
-    [styles.editBtnsStyle]: editMode,
-  });
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (editMode) {
+      submitForm(onEditClick);
+    } else {
+      submitForm(onSubmitClick);
+    }
+  };
+
+  const handleEdit = () => {
+    submitForm(onEditClick);
+  };
 
   return (
     <>
@@ -46,13 +49,15 @@ function VacationForm(props) {
         </Typography>
         <Box
           component="form"
+          id="vacform"
+          onSubmit={handleSubmit}
           className={formContainerStyle}
           noValidate
           autoComplete="off">
           <CustomInput
+            sm
             id="name"
             name="name"
-            sm
             label="Name"
             placeholder="Name"
             onChange={handleInput}
@@ -61,9 +66,9 @@ function VacationForm(props) {
             validators={['required']}
           />
           <CustomInput
+            sm
             id="location"
             name="location"
-            sm
             label="Location"
             placeholder="Location"
             onChange={handleInput}
@@ -72,9 +77,9 @@ function VacationForm(props) {
             validators={['required']}
           />
           <CustomInput
+            sm
             id="price"
             name="price"
-            sm
             label="Price"
             placeholder="Price"
             onChange={handleInput}
@@ -83,9 +88,9 @@ function VacationForm(props) {
             validators={['required', 'number']}
           />
           <CustomInput
+            sm
             id="imageUrl"
             name="imageUrl"
-            sm
             label="Image Url"
             placeholder="Image Url"
             onChange={handleInput}
@@ -95,29 +100,13 @@ function VacationForm(props) {
           />
         </Box>
       </Card>
-      <CardActions className={btnsContainer}>
-        {editMode ? (
-          <>
-            <IconButton
-              iconComponent={<ClearIcon />}
-              lg
-              onClick={onCancelClick}
-            />
-            <IconButton
-              iconComponent={<CheckIcon />}
-              lg
-              onClick={onSubmitClick}
-            />
-          </>
-        ) : (
-          <IconButton
-            iconComponent={<AddIcon />}
-            lg
-            onClick={onAddClick}
-            disabled={!formIsValid}
-          />
-        )}
-      </CardActions>
+      <VacationFormActions
+        editMode={editMode}
+        formIsValid={formIsValid}
+        onCancelClick={onCancelClick}
+        onSubmitClick={handleSubmit}
+        onEditClick={handleEdit}
+      />
     </>
   );
 }
@@ -125,11 +114,25 @@ function VacationForm(props) {
 VacationForm.propTypes = {
   onCancelClick: PropTypes.func.isRequired,
   onSubmitClick: PropTypes.func.isRequired,
-  onAddClick: PropTypes.func.isRequired,
+  onEditClick: PropTypes.func.isRequired,
   editMode: PropTypes.bool,
+  initialValues: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+  }),
 };
 VacationForm.defaultProps = {
   editMode: false,
+  initialValues: {
+    id: '',
+    name: '',
+    location: '',
+    price: '',
+    imageUrl: '',
+  },
 };
 
 export default VacationForm;

@@ -19,5 +19,4 @@ const useArray = initialArray => {
 
   return [array, addItem, editItem, deleteItem];
 };
-
 export default useArray;

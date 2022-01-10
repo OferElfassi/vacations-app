@@ -12,6 +12,12 @@ const iconButtonStyle = theme => ({
       backgroundColor: theme.palette.primary.lighter,
     },
   },
+  disabled: {
+    backgroundColor: theme.palette.primary.lighter,
+    '&:hover': {
+      cursor: 'default',
+    },
+  },
   outline: {
     border: '2.10345px solid #FFFFFF',
   },
