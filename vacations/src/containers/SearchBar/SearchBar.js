@@ -12,10 +12,13 @@ const useStyles = makeStyles(searchBarStyle);
 
 function SearchBar(props) {
   const styles = useStyles();
+
   return (
     <>
       <Grid item className={styles.root}>
         <CustomInput
+          id="search"
+          name="search"
           lg
           placeholder="Search by name or location"
           iconComponent={<SearchIcon />}

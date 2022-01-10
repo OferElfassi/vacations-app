@@ -1,23 +1,51 @@
-import React, {Fragment} from 'react';
+import React, {useEffect, useState} from 'react';
 import Grid from '@mui/material/Grid';
 import PropTypes from 'prop-types';
+import Typography from '@mui/material/Typography';
+import makeStyles from '@mui/styles/makeStyles';
 import VacationCard from '../../components/VacationCard/VacationCard';
+import vacationListStyle from './vacationListStyle';
+
+const useStyles = makeStyles(vacationListStyle);
 
 function VacationList(props) {
-  const {vacations} = props;
+  const styles = useStyles();
+  const [filteredVacations, setFilteredVacations] = useState([]);
+  const {vacations, onEditClick, onDeleteClick, filter, selectedId} = props;
 
-  return (
-    <>
-      {vacations.map(vacation => (
-        <Grid item key={vacation.id}>
-          <VacationCard
-            onEditClick={() => {}}
-            onDeleteClick={() => {}}
-            vacationData={vacation}
-          />
-        </Grid>
-      ))}
-    </>
+  const applyFilter = () => {
+    const filtered = vacations.filter(
+      vac =>
+        vac.name.toLowerCase().includes(filter.toLowerCase()) ||
+        vac.location.toLowerCase().includes(filter.toLowerCase()),
+    );
+    setFilteredVacations(filtered);
+  };
+  const renderVacationList = () =>
+    filteredVacations.map(vacation => (
+      <Grid item key={vacation.id}>
+        <VacationCard
+          selected={vacation.id === selectedId}
+          onEditClick={onEditClick}
+          onDeleteClick={onDeleteClick}
+          vacationData={vacation}
+        />
+      </Grid>
+    ));
+  useEffect(() => {
+    applyFilter();
+  }, [filter, vacations]);
+
+  return filteredVacations.length > 0 ? (
+    renderVacationList()
+  ) : (
+    <Typography
+      className={styles.root}
+      variant="h4"
+      component="h4"
+      gutterBottom>
+      There is no vacations to show ...
+    </Typography>
   );
 }
 
@@ -31,6 +59,12 @@ VacationList.propTypes = {
       imageUrl: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  onEditClick: PropTypes.func.isRequired,
+  onDeleteClick: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
+  selectedId: PropTypes.string,
 };
-
+VacationList.defaultProps = {
+  selectedId: '',
+};
 export default VacationList;

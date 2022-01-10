@@ -1,15 +1,18 @@
 const vacationCardStyle = theme => ({
   root: {
-    width: '294px',
-    height: '265px',
+    width: '290px',
+    height: '261px',
     position: 'relative',
+  },
+  cardSelected: {
+    border: `2px solid ${theme.palette.primary.light}`,
   },
   textOverflow: {
     '& h5': {
       textOverflow: 'ellipsis',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
-      width: '90px',
+      width: '120px',
       '&:hover': {
         overflow: 'visible',
         whiteSpace: 'normal',
@@ -34,7 +37,7 @@ const vacationCardStyle = theme => ({
     top: 152,
   },
   cardContent: {
-    padding: '13.36px 13.26px 0px 13.53px',
+    padding: '10.36px 13.26px 0px 15.53px',
   },
   cardFooter: {
     display: 'flex',
@@ -43,6 +46,7 @@ const vacationCardStyle = theme => ({
     '& div': {
       display: 'flex',
       alignItems: 'center',
+
       '& p': {
         color: theme.palette.text.secondary,
         fontWeight: 'bold',

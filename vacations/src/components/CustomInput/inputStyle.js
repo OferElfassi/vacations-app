@@ -15,30 +15,29 @@ const inputStyle = theme => ({
     },
   },
   input: {
-    'label + &': {
-      marginTop: theme.spacing(2),
+    '&  label': {
+      transform: 'translate(0, 1.5px) scale(0.9)',
+      fontWeight: 700,
     },
     '& .MuiInputBase-input': {
       position: 'relative',
-
       width: '100%',
-
-      transition: theme.transitions.create([
-        'border-color',
-        'background-color',
-        'box-shadow',
-      ]),
       '&:focus': {
         boxShadow: `${alpha(theme.palette.info.main, 0.25)} 0 0 0 0.2rem`,
         borderColor: theme.palette.info.main,
       },
     },
+    '& .MuiOutlinedInput-notchedOutline': {
+      border: 'none',
+    },
   },
+
   smallInput: {
-    borderRadius: 4,
-    fontSize: 16,
-    backgroundColor: theme.palette.text.hint,
+    '& .MuiOutlinedInput-root': {
+      marginTop: 20.34,
+    },
     '& .MuiInputBase-input': {
+      backgroundColor: theme.palette.text.hint,
       borderRadius: 4,
       fontSize: 16,
       padding: '8px 11px 5px',
