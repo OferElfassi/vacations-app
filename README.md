@@ -2,7 +2,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/DCS-Shenkar-2022/assignment9---ex2-express-mongo-heroku-OferElfassi">
+  <a href="https://61dcb64cfa923725936cb1f2--awesome-vacations-app.netlify.app">
     <img src="https://user-images.githubusercontent.com/13490629/148847224-f7a08afe-0dab-4b14-b3b6-bcf0ff5fcaf2.png" alt="Logo" width="220" height="170">
   </a>
 <h3 align="center">React Vacations Management</h3>
@@ -39,7 +39,8 @@ The project uses the following technologies:
 * React hooks
 * Material UI
 
-The API is published on heroku in the following address : [https://employees-flight-api.herokuapp.com](https://employees-flight-api.herokuapp.com)
+The APP is deployed on netlify in the following address : [ https://61dcb64cfa923725936cb1f2--awesome-vacations-app.netlify.app
+]( https://61dcb64cfa923725936cb1f2--awesome-vacations-app.netlify.app)
 
 Initial components plan
 
