@@ -52,6 +52,7 @@ function App() {
                     vacations={vacations}
                     onDeleteClick={handleDeleteVacationClick}
                     onEditClick={handleEditClick}
+                    selectedId={vacationEdit && vacationEdit.id}
                 />
             }
         />

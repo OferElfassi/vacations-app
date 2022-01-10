@@ -7,10 +7,11 @@ import VacationCard from '../../components/VacationCard/VacationCard';
 import vacationListStyle from './vacationListStyle';
 
 const useStyles = makeStyles(vacationListStyle);
+
 function VacationList(props) {
   const styles = useStyles();
   const [filteredVacations, setFilteredVacations] = useState([]);
-  const {vacations, onEditClick, onDeleteClick, filter} = props;
+  const {vacations, onEditClick, onDeleteClick, filter, selectedId} = props;
 
   const applyFilter = () => {
     const filtered = vacations.filter(
@@ -24,6 +25,7 @@ function VacationList(props) {
     filteredVacations.map(vacation => (
       <Grid item key={vacation.id}>
         <VacationCard
+          selected={vacation.id === selectedId}
           onEditClick={onEditClick}
           onDeleteClick={onDeleteClick}
           vacationData={vacation}
@@ -60,6 +62,9 @@ VacationList.propTypes = {
   onEditClick: PropTypes.func.isRequired,
   onDeleteClick: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,
+  selectedId: PropTypes.string,
 };
-
+VacationList.defaultProps = {
+  selectedId: '',
+};
 export default VacationList;

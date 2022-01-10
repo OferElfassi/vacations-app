@@ -14,9 +14,15 @@ import VacationCardActions from './VacationCardActions';
 const useStyles = makeStyles(vacationCardStyle);
 
 function VacationCard(props) {
-  const {onEditClick, onDeleteClick, vacationData} = props;
+  const {onEditClick, onDeleteClick, vacationData, selected} = props;
   const [imageUrl, setImageUrl] = useState(vacationData.imageUrl);
   const styles = useStyles();
+
+  const cardRoot = cx({
+    [styles.root]: true,
+    [styles.cardSelected]: selected,
+  });
+
   const cardImage = cx({
     [styles.media]: true,
     [styles.cardImg]: true,
@@ -31,7 +37,7 @@ function VacationCard(props) {
   };
 
   return (
-    <Card className={styles.root}>
+    <Card className={cardRoot}>
       <CardMedia
         className={cardImage}
         component="img"
@@ -62,6 +68,7 @@ function VacationCard(props) {
 VacationCard.propTypes = {
   onEditClick: PropTypes.func.isRequired,
   onDeleteClick: PropTypes.func.isRequired,
+  selected: PropTypes.bool,
   vacationData: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -70,5 +77,7 @@ VacationCard.propTypes = {
     imageUrl: PropTypes.string.isRequired,
   }).isRequired,
 };
-
+VacationCard.defaultProps = {
+  selected: false,
+};
 export default VacationCard;
