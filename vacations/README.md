@@ -1,70 +1,100 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://61dcb64cfa923725936cb1f2--awesome-vacations-app.netlify.app">
+    <img src="https://user-images.githubusercontent.com/13490629/148847224-f7a08afe-0dab-4b14-b3b6-bcf0ff5fcaf2.png" alt="Logo" width="220" height="170">
+  </a>
+<h3 align="center">React Vacations Management</h3>
 
-## Available Scripts
+  <p align="center">
+    An awesome React app for managing vacations
+    <br />
 
-In the project directory, you can run:
+  </p>
+</p>
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
 
-### `npm test`
+* [About the Project](#about-the-project)
+    * [Built With](#built-with)
+    * [Component Hierarchy](#Component-Hierarchy)
+* [Getting Started](#getting-started)
+    * [Installation](#installation)
+* [ScreenShoot](#Application-ScreenShoot)
+* [Contact](#contact)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project implements vacation management app
 
-### `npm run eject`
+The project uses the following technologies:
+* React
+* React hooks
+* Material UI
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The APP is deployed on netlify in the following address : [ https://61dcb64cfa923725936cb1f2--awesome-vacations-app.netlify.app
+]( https://61dcb64cfa923725936cb1f2--awesome-vacations-app.netlify.app)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Built With
 
-## Learn More
+* [Create react app](https://reactjs.org/docs/create-a-new-react-app.html)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Component Hierarchy
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Download the plans pdf file](https://github.com/DCS-Shenkar-2022/assignment-ex3-react-OferElfassi/files/7842493/Vacation.App.Planning.pdf)
 
-### Code Splitting
+Initial components hierarchy plan
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<img src="https://user-images.githubusercontent.com/13490629/148847620-79a924f2-c3ac-4e07-9f57-2d76cc2cb79d.PNG" alt="Logo" width="700" height="500">
 
-### Analyzing the Bundle Size
+Actual components hierarchy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<img src="https://user-images.githubusercontent.com/13490629/148853823-2a070f18-dbea-42cd-9c55-028961ee956e.PNG" alt="Logo" width="700" height="800">
 
-### Making a Progressive Web App
+<!-- GETTING STARTED -->
+## Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+To get a local copy up and running follow these simple example steps.
 
-### Advanced Configuration
+### Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. Clone the repo [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=6655390&assignment_repo_type=AssignmentRepo)
+```sh
+git clone https://github.com/DCS-Shenkar-2022/assignment-ex3-react-OferElfassi.git
+```
+2. Install NPM packages
+```sh
+npm install
+```
+3. Start the application
+```JS
+npm start
+```
 
-### Deployment
+<!-- Application ScreenShoot -->
+## Application ScreenShoot
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<img src="https://user-images.githubusercontent.com/13490629/148847091-7fb29c99-bc3f-47e6-99db-51784ffe233a.PNG" alt="Logo" width="500" height="300">
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+<!-- CONTACT -->
+## Contact
+
+Ofer Elfassi - [@Linkedin](https://www.linkedin.com/in/oferelfassi) - ofer2212@gmail.com
+
+Project Link: [https://github.com/DCS-Shenkar-2022/assignment-ex3-react-OferElfassi](https://github.com/DCS-Shenkar-2022/assignment-ex3-react-OferElfassi)
+
+
+

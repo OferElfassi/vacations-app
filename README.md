@@ -21,6 +21,7 @@
 
 * [About the Project](#about-the-project)
     * [Built With](#built-with)
+    * [Component Hierarchy](#Component-Hierarchy)
 * [Getting Started](#getting-started)
     * [Installation](#installation)
 * [ScreenShoot](#Application-ScreenShoot)
@@ -42,16 +43,23 @@ The project uses the following technologies:
 The APP is deployed on netlify in the following address : [ https://61dcb64cfa923725936cb1f2--awesome-vacations-app.netlify.app
 ]( https://61dcb64cfa923725936cb1f2--awesome-vacations-app.netlify.app)
 
-Initial components plan
-
-<img src="https://user-images.githubusercontent.com/13490629/148847620-79a924f2-c3ac-4e07-9f57-2d76cc2cb79d.PNG" alt="Logo" width="700" height="500">
 
 
 ### Built With
 
 * [Create react app](https://reactjs.org/docs/create-a-new-react-app.html)
 
+### Component Hierarchy
 
+[Download the plans pdf file](https://github.com/DCS-Shenkar-2022/assignment-ex3-react-OferElfassi/files/7842493/Vacation.App.Planning.pdf)
+
+Initial components hierarchy plan
+
+<img src="https://user-images.githubusercontent.com/13490629/148847620-79a924f2-c3ac-4e07-9f57-2d76cc2cb79d.PNG" alt="Logo" width="700" height="500">
+
+Actual components hierarchy
+
+<img src="https://user-images.githubusercontent.com/13490629/148853823-2a070f18-dbea-42cd-9c55-028961ee956e.PNG" alt="Logo" width="700" height="800">
 
 <!-- GETTING STARTED -->
 ## Getting Started
