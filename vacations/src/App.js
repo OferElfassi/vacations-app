@@ -7,6 +7,7 @@ import vacationsArray from './data/data';
 import useArray from './hooks/useArray';
 
 function App() {
+    const [listFilter, setListFilter] = useState('');
     const [vacationEdit, setVacationEdit] = useState(null);
     const [vacations, addVacation, editVacation, deleteVacation] =
         useArray(vacationsArray);
@@ -21,7 +22,7 @@ function App() {
     };
     return (
         <AppLayout
-            searchBar={<SearchBar />}
+            searchBar={<SearchBar onSearchClick={setListFilter} />}
             vacationForm={
                 <VacationForm
                     onSubmitClick={addVacation}
@@ -33,6 +34,7 @@ function App() {
             }
             vacationList={
                 <VacationList
+                    filter={listFilter}
                     vacations={vacations}
                     onDeleteClick={deleteVacation}
                     onEditClick={handleEditClick}
