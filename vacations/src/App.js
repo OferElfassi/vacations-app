@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import React, {useState} from 'react';
 import SearchBar from './containers/SearchBar/SearchBar';
 import VacationForm from './containers/VacationForm/VacationForm';
@@ -5,6 +6,7 @@ import VacationList from './containers/VacationList/VacationList';
 import AppLayout from './containers/AppLayout/AppLayout';
 import vacationsArray from './data/data';
 import useArray from './hooks/useArray';
+import generateId from './utils/generateId';
 
 function App() {
     const [listFilter, setListFilter] = useState('');
@@ -24,21 +26,20 @@ function App() {
         deleteVacation(vacationId);
     };
     const handleAddVacationClick = vacationData => {
-        if (vacationId === vacationEdit.id) {
-            setVacationEdit(null);
-        }
-        deleteVacation(vacationId);
+        vacationData.id = generateId(vacationData.name);
+        addVacation(vacationData);
     };
 
     const handleFormCancelClick = () => {
         setVacationEdit(null);
     };
+
     return (
         <AppLayout
             searchBar={<SearchBar onSearchClick={setListFilter} />}
             vacationForm={
                 <VacationForm
-                    onSubmitClick={addVacation}
+                    onSubmitClick={handleAddVacationClick}
                     onCancelClick={handleFormCancelClick}
                     onEditClick={editVacation}
                     initialValues={vacationEdit}
