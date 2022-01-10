@@ -4,15 +4,12 @@ import makeStyles from '@mui/styles/makeStyles';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
-import ModeEditRoundedIcon from '@mui/icons-material/ModeEditRounded';
 import Typography from '@mui/material/Typography';
-import CardActions from '@mui/material/CardActions';
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
 import PropTypes from 'prop-types';
 import vacationCardStyle from './vacationCardStyle';
-import IconButton from '../IconButton/IconButton';
 import defaultImage from '../../assets/images/vacation_default.png';
+import VacationCardActions from './VacationCardActions';
 
 const useStyles = makeStyles(vacationCardStyle);
 
@@ -41,20 +38,11 @@ function VacationCard(props) {
         image={imageUrl}
         onError={handleImageError}
       />
-      <CardActions className={styles.btnsContainer}>
-        <IconButton
-          iconComponent={<DeleteRoundedIcon />}
-          sm
-          outline
-          onClick={() => onDeleteClick(vacationData.id)}
-        />
-        <IconButton
-          iconComponent={<ModeEditRoundedIcon />}
-          sm
-          outline
-          onClick={() => onEditClick(vacationData.id)}
-        />
-      </CardActions>
+      <VacationCardActions
+        onEditClick={onEditClick}
+        onDeleteClick={onDeleteClick}
+        vacationData={vacationData}
+      />
       <CardContent className={cardContent}>
         <Typography variant="h5" component="h5" gutterBottom>
           {vacationData.name}
