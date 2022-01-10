@@ -17,6 +17,19 @@ function App() {
         setVacationEdit(fetchedVacation);
     };
 
+    const handleDeleteVacationClick = vacationId => {
+        if (vacationId === vacationEdit.id) {
+            setVacationEdit(null);
+        }
+        deleteVacation(vacationId);
+    };
+    const handleAddVacationClick = vacationData => {
+        if (vacationId === vacationEdit.id) {
+            setVacationEdit(null);
+        }
+        deleteVacation(vacationId);
+    };
+
     const handleFormCancelClick = () => {
         setVacationEdit(null);
     };
@@ -36,7 +49,7 @@ function App() {
                 <VacationList
                     filter={listFilter}
                     vacations={vacations}
-                    onDeleteClick={deleteVacation}
+                    onDeleteClick={handleDeleteVacationClick}
                     onEditClick={handleEditClick}
                 />
             }
