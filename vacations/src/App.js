@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import React, {useState} from 'react';
 import SearchBar from './containers/SearchBar/SearchBar';
 import VacationForm from './containers/VacationForm/VacationForm';
@@ -20,17 +19,23 @@ function App() {
   };
 
   const handleDeleteVacationClick = vacationId => {
-    if (vacationId === vacationEdit.id) {
+    if (vacationEdit && vacationId === vacationEdit.id) {
       setVacationEdit(null);
     }
     deleteVacation(vacationId);
   };
+
   const handleAddVacationClick = vacationData => {
-    vacationData.id = generateId(vacationData.name);
-    addVacation(vacationData);
+    const newVacation = {...vacationData, id: generateId(vacationData.name)};
+    addVacation(newVacation);
   };
 
   const handleFormCancelClick = () => {
+    setVacationEdit(null);
+  };
+
+  const handleEditSubmit = vacation => {
+    editVacation(vacation);
     setVacationEdit(null);
   };
 
@@ -41,7 +46,7 @@ function App() {
         <VacationForm
           onSubmitClick={handleAddVacationClick}
           onCancelClick={handleFormCancelClick}
-          onEditClick={editVacation}
+          onEditClick={handleEditSubmit}
           initialValues={vacationEdit}
           editMode={vacationEdit !== null}
         />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import cx from 'clsx';
 import makeStyles from '@mui/styles/makeStyles';
 import PropTypes from 'prop-types';
@@ -60,4 +60,4 @@ IconButton.defaultProps = {
   type: 'button',
   form: '',
 };
-export default IconButton;
+export default memo(IconButton);

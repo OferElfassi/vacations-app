@@ -1,2 +1,5 @@
 .idea/
 .github/
+
+# Local Netlify folder
+.netlify

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import cx from 'clsx';
 import makeStyles from '@mui/styles/makeStyles';
 import PropTypes from 'prop-types';
@@ -28,18 +28,21 @@ function VacationForm(props) {
     [styles.formRoot]: true,
   });
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (editMode) {
-      submitForm(onEditClick);
-    } else {
-      submitForm(onSubmitClick);
-    }
-  };
+  const handleSubmit = useCallback(
+    e => {
+      e.preventDefault();
+      if (editMode) {
+        submitForm(onEditClick);
+      } else {
+        submitForm(onSubmitClick);
+      }
+    },
+    [submitForm],
+  );
 
-  const handleEdit = () => {
+  const handleEdit = useCallback(() => {
     submitForm(onEditClick);
-  };
+  }, [submitForm]);
 
   return (
     <>

@@ -1,21 +1,21 @@
-import {useState} from 'react';
+import {useState, useCallback} from 'react';
 
 const useArray = initialArray => {
   const [array, updateArray] = useState(initialArray);
 
-  const addItem = itemData => {
+  const addItem = useCallback(itemData => {
     updateArray(prevState => [...prevState, itemData]);
-  };
+  }, []);
 
-  const editItem = itemData => {
-    updateArray(
-      array.map(item => (item.id === itemData.id ? {...itemData} : item)),
+  const editItem = useCallback(itemData => {
+    updateArray(prevState =>
+      prevState.map(item => (item.id === itemData.id ? {...itemData} : item)),
     );
-  };
+  }, []);
 
-  const deleteItem = itemId => {
-    updateArray(array.filter(item => item.id !== itemId));
-  };
+  const deleteItem = useCallback(itemId => {
+    updateArray(prevState => prevState.filter(item => item.id !== itemId));
+  }, []);
 
   return [array, addItem, editItem, deleteItem];
 };
