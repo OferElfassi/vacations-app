@@ -40,8 +40,8 @@ The project uses the following technologies:
 * React hooks
 * Material UI
 
-The APP is deployed on netlify in the following address : [ https://61dcb64cfa923725936cb1f2--awesome-vacations-app.netlify.app
-]( https://61dcb64cfa923725936cb1f2--awesome-vacations-app.netlify.app)
+The APP is deployed on netlify in the following address : [ https://awesome-vacations-app.netlify.app
+]( https://awesome-vacations-app.netlify.app)
 
 
 
